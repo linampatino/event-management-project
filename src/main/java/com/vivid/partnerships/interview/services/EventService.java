@@ -20,8 +20,8 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
     
-    public void create(String name, Date date, Venue venue) {
-    	this.eventRepository.create(name, date, venue);
+    public Event create(Event event) {
+    	return this.eventRepository.create(event);
     }
 
      public List<Event> getEvents() {

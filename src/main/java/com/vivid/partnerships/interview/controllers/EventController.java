@@ -1,20 +1,23 @@
 package com.vivid.partnerships.interview.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vivid.partnerships.interview.controllers.vo.EventVO;
 import com.vivid.partnerships.interview.model.Event;
 import com.vivid.partnerships.interview.services.EventService;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EventController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(EventController.class);
-
+    
     private final EventService eventService;
 
     @Autowired
@@ -24,8 +27,16 @@ public class EventController {
 
     @GetMapping("/events")
     public List<Event> getEvents() {
-        List<Event> events = eventService.getEvents();
-        LOGGER.info("Returning {} events", events.size());
-        return events;
+        return this.eventService.getEvents();
+    }
+    
+    @PostMapping("/event")
+    public Event createEvent(@RequestBody EventVO eventVO) {
+        Event event = new Event();
+        event.setEventId(eventVO.getEventId());
+        event.setName(eventVO.getName());
+        event.setDate(eventVO.getDate());
+        
+        return this.eventService.create(event);
     }
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.vivid.partnerships.interview.model.Event;
 import com.vivid.partnerships.interview.model.Venue;
@@ -19,10 +20,10 @@ import com.vivid.partnerships.interview.model.Venue;
  *
  */
 
-public interface EventRepository /*extends Repository*/ {
+@CrossOrigin(origins = "http://localhost:4200")
+public interface EventRepository {
 
-	//public void setDataSource(DataSource dataSource);
-	public void create(String name, Date date, Venue venue);
+	public Event create(Event event);
 	public List<Event>listEvents();
 }
 

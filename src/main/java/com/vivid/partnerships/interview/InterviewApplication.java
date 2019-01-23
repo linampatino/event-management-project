@@ -30,14 +30,4 @@ public class InterviewApplication /*implements CommandLineRunner*/ {
 		LOGGER.info("Running app");
 	}
 	
-	/*public void run(String... strings) throws Exception {
-		System.out.println("metodo run");
-		
-		EventRepository eventRepository = new EventJDBCTemplate();
-		
-		EventService service = new EventService(eventRepository);
-		List<Event> events = 
-	}*/
-
-
 }
