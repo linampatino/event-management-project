@@ -3,16 +3,16 @@ package com.vivid.partnerships.interview.model;
 import java.util.Date;
 
 public class Event {
-	private Integer id;
+	private Integer eventId;
 	private String name;
 	private Date date;
 	private Venue venue;
 	
-	public Integer getId() {
-		return id;
+	public Integer getEventId() {
+		return eventId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setEventId(Integer id) {
+		this.eventId = id;
 	}
 	public String getName() {
 		return name;

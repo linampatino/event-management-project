@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.vivid.partnerships.interview.model.Event;
 import com.vivid.partnerships.interview.model.Venue;
 
@@ -16,9 +18,10 @@ import com.vivid.partnerships.interview.model.Venue;
  * @author lina.patino
  *
  */
+
 public interface EventRepository /*extends Repository*/ {
 
-	public void setDataSource(DataSource dataSource);
+	//public void setDataSource(DataSource dataSource);
 	public void create(String name, Date date, Venue venue);
 	public List<Event>listEvents();
 }

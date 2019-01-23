@@ -8,7 +8,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.vivid.partnerships.interview.model.Event;
 import com.vivid.partnerships.interview.model.Venue;
@@ -17,17 +19,18 @@ import com.vivid.partnerships.interview.model.Venue;
  * @author lina.patino
  *
  */
+@Repository
 public class EventJDBCTemplate implements EventRepository {
 
-
+	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	private DataSource dataSource;
+	//private DataSource dataSource;
 	
-	@Override
+	/*@Override
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
+	}*/
 
 	@Override
 	public void create(String name, Date date, Venue venue) {

@@ -11,7 +11,17 @@ import com.vivid.partnerships.interview.repository.EventRepository;
 import com.vivid.partnerships.interview.services.EventService;
 
 
-@SpringBootApplication
+@SpringBootApplication(
+		scanBasePackages = {
+				"com.vivid.partnerships",
+				"com.vivid.partnerships.interview",
+				"com.vivid.partnerships.interview.controllers",
+				"com.vivid.partnerships.interview.model",
+				"com.vivid.partnerships.interview.repository",
+				"com.vivid.partnerships.interview.services"
+				}
+		)
+
 public class InterviewApplication /*implements CommandLineRunner*/ {
 	private static final Logger LOGGER = LoggerFactory.getLogger(InterviewApplication.class);
 

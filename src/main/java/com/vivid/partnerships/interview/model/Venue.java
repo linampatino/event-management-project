@@ -1,16 +1,16 @@
 package com.vivid.partnerships.interview.model;
 
 public class Venue {
-    private Integer id;
+    private Integer venueId;
     private String name;
     private String city;
     private String state;
     
-	public Integer getId() {
-		return id;
+	public Integer getVenueId() {
+		return venueId;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setVenueId(Integer id) {
+		this.venueId = id;
 	}
 	public String getName() {
 		return name;

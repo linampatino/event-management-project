@@ -1,5 +1,17 @@
-INSERT INTO events(name, date) VALUES('EVENTO1','aGOSTO 1');
-INSERT INTO events(name, date) VALUES('EVENTO2','aGOSTO 2');
-INSERT INTO events(name, date) VALUES('EVENTO3','aGOSTO 3');
-INSERT INTO events(name, date) VALUES('EVENTO4','aGOSTO 4');
-INSERT INTO events(name, date) VALUES('EVENTO5','aGOSTO 5');
+INSERT INTO VENUES(NAME, CITY, STATE) VALUES('Wrigley Field', 'Chicago', 'IL');
+
+	
+INSERT INTO events(NAME, DATE, VENUES_ID) 
+ SELECT 'Chicago White Sox vs. Chicago Cubs', CURRENT_TIMESTAMP(), V.VENUE_ID 
+   FROM VENUES V
+  WHERE UPPER(V.NAME) LIKE UPPER('%Wrigley Field%');
+
+ INSERT INTO events(NAME, DATE, VENUES_ID) 
+ SELECT '2Chicago White Sox vs. Chicago Cubs', CURRENT_TIMESTAMP(), V.VENUE_ID 
+   FROM VENUES V
+  WHERE UPPER(V.NAME) LIKE UPPER('%Wrigley Field%');
+  
+  INSERT INTO events(NAME, DATE, VENUES_ID) 
+ SELECT '3Chicago White Sox vs. Chicago Cubs', CURRENT_TIMESTAMP(), V.VENUE_ID 
+   FROM VENUES V
+  WHERE UPPER(V.NAME) LIKE UPPER('%Wrigley Field%');
