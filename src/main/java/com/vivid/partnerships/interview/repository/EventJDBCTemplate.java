@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.vivid.partnerships.interview.model.Event;
+import com.vivid.partnerships.interview.model.Venue;
 
 /**
  * @author lina.patino
@@ -24,9 +25,19 @@ public class EventJDBCTemplate implements EventRepository {
 
 	@Override
 	public Event create(Event event) {
-		if (this.jdbcTemplate.update("INSERT INTO events(name, date) VALUES (?,?)", event.getName(), event.getDate()) > 0 )
-			return event;
-		return new Event();
+		event.getVenue().setVenueId(insertVenue(event.getVenue()));
+		event.setEventId(insertEvent(event));
+		return event;
+	}
+	
+	private int insertVenue(Venue venue) {
+		this.jdbcTemplate.update("INSERT INTO venues(name, city, state) VALUES (?,?,?)", venue.getName(), venue.getCity(), venue.getState());
+		return this.jdbcTemplate.queryForObject("select max(venue_id) from venues where name = ? and city = ? and state = ?", new Object[] {venue.getName(), venue.getCity(), venue.getState()}, Integer.class );
+	}
+	
+	private int insertEvent(Event event) {
+		this.jdbcTemplate.update("INSERT INTO events(name, date, venues_id) VALUES (?,?,?)", event.getName(), event.getDate(), event.getVenue().getVenueId());
+		return this.jdbcTemplate.queryForObject("select max(event_id) from events where name = ? and date = ? and venues_id= ?", new Object[] {event.getName(), event.getDate(), event.getVenue().getVenueId()}, Integer.class );
 	}
 
 	@Override
@@ -40,7 +51,8 @@ public class EventJDBCTemplate implements EventRepository {
 			  + "		v.city  venueCity, "
 			  + "		v.state venueState"
 			  + "  from events e, venues v "
-			  + " where e.venues_id = v.venue_id";
+			  + " where e.venues_id = v.venue_id"
+			  + " order by e.date desc";
 		
 		return this.jdbcTemplate.query(query, new EventRowMapper());
 	}
