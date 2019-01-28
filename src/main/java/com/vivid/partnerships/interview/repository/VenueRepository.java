@@ -1,6 +1,5 @@
 package com.vivid.partnerships.interview.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import com.vivid.partnerships.interview.model.Venue;

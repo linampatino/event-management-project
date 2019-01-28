@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vivid.partnerships.interview.model.Event;
-import com.vivid.partnerships.interview.model.Venue;
-import com.vivid.partnerships.interview.repository.EventJDBCTemplate;
 import com.vivid.partnerships.interview.repository.EventRepository;
 
-import java.util.Date;
 import java.util.List;
 
 @Service

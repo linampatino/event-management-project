@@ -2,7 +2,6 @@ package com.vivid.partnerships.interview.controllers.vo;
 
 import java.util.Date;
 
-import com.vivid.partnerships.interview.model.Venue;
 
 
 public class EventVO {
